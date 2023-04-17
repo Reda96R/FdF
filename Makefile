@@ -1,7 +1,7 @@
 OS = $(shell uname -s)
 NAME = fdf
 BONUS = fdf_bonus
-FILES = ft_helpers.c ft_maps_reader.c ft_split.c get_next_line.c get_next_line_utils.c
+FILES = ft_helpers.c ft_maps_reader.c ft_split.c get_next_line.c get_next_line_utils.c ft_reader_tools.c ft_checkers.c ft_janitor.c 
 OBJS = $(FILES:.c=.o)
 OBJS_M = $(FILES_M:.c=.o)
 B_OBJS = $(BONUS_FILES:.c=.o)
@@ -12,7 +12,7 @@ FILES_M = fdf.c
 COMP = -lmlx -framework OpenGL -framework AppKit
 COMP_O = -Imlx
 else
-FILES_M = fdf_linux.c
+FILES_M = fdf.c
 COMP = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 COMP_O = -I/usr/include -Imlx_linux -O3
 endif
