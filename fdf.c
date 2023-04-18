@@ -27,7 +27,7 @@ int	main(int ac, char *av[])
     exit (1);
 	}
 	else
-		fdf = ft_maps_reader(av[1]);
+		fdf = ft_maps_reader(av[1], fd);
 	ft_cleaner(&fdf, ft_height(av[1]));
 	return (0);
 }

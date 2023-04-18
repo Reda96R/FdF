@@ -37,14 +37,12 @@ void	ft_filler(t_data **fdf, int fd)
 	}
 }
 
-t_data	**ft_maps_reader(char *file)
+t_data	**ft_maps_reader(char *file, int fd)
 {
 	t_data	**fdf;
 	int		x;
 	int		y;
-	int		fd;
 
-	fd = open(file, O_RDONLY, 0);
 	x = ft_width(file);
 	y = ft_height(file);
 	fdf = (t_data **) malloc (sizeof (t_data *) * (y + 1));

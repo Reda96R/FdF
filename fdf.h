@@ -27,7 +27,7 @@ typedef struct s_data
 }	t_data;
 
 /* ::: maps reader :::*/
-t_data	**ft_maps_reader(char *file);
+t_data	**ft_maps_reader(char *file, int fd);
 void	ft_filler(t_data **fdf, int fd);
 
 /* ::: reader tools ::: */
