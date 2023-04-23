@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_helpers.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 17:39:15 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/04/17 00:35:59 by rerayyad         ###   ########.fr       */
+/*   Created: 2022/10/29 13:29:14 by rerayyad          #+#    #+#             */
+/*   Updated: 2022/11/02 11:27:04 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-#include <stdio.h>
+#include "libft.h"
 
-int	ft_word_counter(char *str, char c)
+void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
-	int	count;
 
-  i = 0;
-	count = 0;
-	while (str[i])
-    if (str[i++] == c && str[i] != c)
-			count++;
-  return (count);
+	if (!s)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		write (fd, &s[i], 1);
+		i++;
+	}
 }
-

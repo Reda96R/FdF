@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_helpers.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 17:39:15 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/04/17 00:35:59 by rerayyad         ###   ########.fr       */
+/*   Created: 2022/10/29 10:38:47 by rerayyad          #+#    #+#             */
+/*   Updated: 2022/10/29 10:40:18 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-#include <stdio.h>
+#include "libft.h"
 
-int	ft_word_counter(char *str, char c)
+void	ft_bzero(void *s, size_t n)
 {
-	int	i;
-	int	count;
-
-  i = 0;
-	count = 0;
-	while (str[i])
-    if (str[i++] == c && str[i] != c)
-			count++;
-  return (count);
+	ft_memset(s, '\0', n);
 }
-

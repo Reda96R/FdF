@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checkers.c                                      :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/17 00:06:12 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/04/17 00:37:54 by rerayyad         ###   ########.fr       */
+/*   Created: 2022/10/29 12:02:53 by rerayyad          #+#    #+#             */
+/*   Updated: 2022/10/29 12:05:33 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-#include "mylib/libft.h"
+#include "libft.h"
 
-int	ft_extension_check(char *map)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	char	*extension;
+	size_t	i;
 
-	extension = ft_strrchr(map, 'f');
-	if (extension == NULL || ft_strncmp(extension - 3, ".fdf", 4))
-    return (0);
-  return (1);
+	i = 0;
+	while (n--)
+	{
+		if (s1[i] != s2[i] || s1[i] == '\0' || s2[i] == '\0')
+			return ((unsigned char) s1[i] - (unsigned char) s2[i]);
+		i++;
+	}
+	return (0);
 }

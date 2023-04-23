@@ -19,9 +19,9 @@ int	ft_width(char *file)
 	int		width;
 
 	fd = open(file, O_RDONLY, 0);
-	get_next_line(fd, &line);
-	width = ft_word_counter(line, ' ');
-	free(line);
+  get_next_line(fd, &line);
+  width = ft_word_counter(line, ' ');
+  free(line);
 	close (fd);
 	return (width);
 }

@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include "get_next_line.h"
+# include "mylib/libft.h"
 
 typedef struct s_data
 {
@@ -44,8 +45,8 @@ void	ft_cleaner(t_data ***fdf, int rows);
 
 /* ::: helpers ::: */
 int		ft_word_counter(char *str, char c);
-char	**ft_split(char const *s, char c);
-int		ft_atoi(const char *str);
-char	*ft_strrchr(char *s, int c);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
+//char	**ft_split(char const *s, char c);
+//int		ft_atoi(const char *str);
+//char	*ft_strrchr(char *s, int c);
+//int		ft_strncmp(const char *s1, const char *s2, size_t n);
 #endif

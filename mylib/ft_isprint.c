@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_helpers.c                                       :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 17:39:15 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/04/17 00:35:59 by rerayyad         ###   ########.fr       */
+/*   Created: 2022/10/20 08:55:12 by rerayyad          #+#    #+#             */
+/*   Updated: 2022/11/09 13:47:09 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-#include <stdio.h>
+#include "libft.h"
 
-int	ft_word_counter(char *str, char c)
+int	ft_isprint(int c)
 {
-	int	i;
-	int	count;
-
-  i = 0;
-	count = 0;
-	while (str[i])
-    if (str[i++] == c && str[i] != c)
-			count++;
-  return (count);
+	if (c >= 32 && c < 127)
+		return (1);
+	return (0);
 }
-

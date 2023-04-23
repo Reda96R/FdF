@@ -12,6 +12,72 @@
 
 #include "get_next_line.h"
 
+int     ft_search(char *str, int c)
+{
+        int     i;
+
+        i = 0;
+        if (!str)
+                return (0);
+        while (str[i])
+        {
+                if (str[i] == (char)c)
+                        return (1);
+                i++;
+        }
+        return (0);
+}
+
+char    *ft_line(char *src)
+{
+        int             i;
+        char    *str;
+
+        i = 0;
+        if (!src)
+                return (NULL);
+        while (src[i] && src[i] != '\n')
+                i++;
+        str = (char *)malloc(sizeof(char) * (i + 2));
+        if (!str)
+                return (NULL);
+        i = 0;
+        while (src[i] && src[i] != '\n')
+        {
+                str[i] = src[i];
+                i++;
+        }
+        if (src[i] == '\n')
+                str[i++] = '\n';
+        str[i] = '\0';
+        return (str);
+}
+
+char    *ft_saver(char *stock)
+{
+        char    *str;
+        int             i;
+        int             j;
+
+        i = 0;
+        j = 0;
+        while (stock[i] && stock[i] != '\n')
+                i++;
+        if (!stock[i])
+        {
+                free(stock);
+                return (0);
+        }
+        str = (char *)malloc(sizeof (char) * ft_strlen(stock) - i + 1);
+        if (!str)
+                return (NULL);
+        i++;
+        while (stock[i])
+                str[j++] = stock[i++];
+        str[j] = '\0';
+        free(stock);
+        return (str);
+}
 char	*ft_fill(char *stock, int fd)
 {
 	int		i;
@@ -24,7 +90,7 @@ char	*ft_fill(char *stock, int fd)
 		return (NULL);
 	}
 	i = 1;
-	while (i && !ft_strchr(stock, '\n'))
+	while (i && !ft_search(stock, '\n'))
 	{
 		i = read(fd, str, BUFFER_SIZE);
 		if (i < 0)

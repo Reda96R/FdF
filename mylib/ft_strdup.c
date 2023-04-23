@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_helpers.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 17:39:15 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/04/17 00:35:59 by rerayyad         ###   ########.fr       */
+/*   Created: 2022/10/29 12:28:20 by rerayyad          #+#    #+#             */
+/*   Updated: 2022/11/02 08:30:31 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-#include <stdio.h>
+#include "libft.h"
 
-int	ft_word_counter(char *str, char c)
+char	*ft_strdup(const char *s1)
 {
-	int	i;
-	int	count;
+	char	*s;
+	int		l;
+	int		i;
 
-  i = 0;
-	count = 0;
-	while (str[i])
-    if (str[i++] == c && str[i] != c)
-			count++;
-  return (count);
+	l = ft_strlen(s1);
+	i = 0;
+	s = (char *)malloc(sizeof (char) * l + 1);
+	if (!s)
+		return (0);
+	while (s1[i])
+	{
+		s[i] = s1[i];
+		i++;
+	}
+	s[i] = '\0';
+	return (s);
 }
-

@@ -1,18 +1,19 @@
 OS = $(shell uname -s)
 NAME = fdf
 BONUS = fdf_bonus
-FILES = ft_helpers.c ft_maps_reader.c ft_split.c get_next_line.c get_next_line_utils.c ft_reader_tools.c ft_checkers.c ft_janitor.c 
+FILES = ft_helpers.c ft_maps_reader.c get_next_line.c ft_reader_tools.c ft_checkers.c ft_janitor.c 
+MYLIB = mylib/mylib.a
 OBJS = $(FILES:.c=.o)
 OBJS_M = $(FILES_M:.c=.o)
 B_OBJS = $(BONUS_FILES:.c=.o)
-CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 ifeq ($(OS), Darwin)
 FILES_M = fdf.c
 COMP = -lmlx -framework OpenGL -framework AppKit
 COMP_O = -Imlx
 else
-FILES_M = fdf.c
+FILES_M = fdf_linux.c
 COMP = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 COMP_O = -I/usr/include -Imlx_linux -O3
 endif
@@ -23,7 +24,7 @@ bonus: $(BONUS)
 
 $(NAME): $(OBJS) $(OBJS_M)
 	@echo $(CURSIVE)$(GRAY) ":::Compiling $(NAME):::" $(NONE)
-	@cc $(CFLAGS) $(COMP) $(OBJS) $(OBJS_M) -o $(NAME)
+	@cc $(CFLAGS) $(COMP) $(OBJS) $(OBJS_M) $(MYLIB) -o $(NAME)
 	@echo $(GREEN)"::: $(NAME) is ready:::"$(NONE)
 
 $(BONUS): $(B_OBJS) $(OBJS)
@@ -33,6 +34,7 @@ $(BONUS): $(B_OBJS) $(OBJS)
 
 $(OBJS): $(FILES)
 	@echo $(CURSIVE)$(GRAY) ":::Making object files:::" $(NONE)
+	@make -s -C mylib/
 	@cc $(CFLAGS) $(COMP_O) -c $(FILES)
 	@echo $(GREEN)":::Done:::"$(NONE)
 
@@ -47,12 +49,14 @@ $(B_OBJS): $(BONUS_FILES)
 clean:
 	@echo $(CURSIVE)$(GRAY) ":::Deleting object files:::" $(NONE)
 	@rm -f $(OBJS) $(B_OBJS) $(OBJS_M)
+	@make -s clean -C mylib/
 	@echo $(RED)":::Deleted:::"$(NONE)
 
 
 fclean: clean
 	@echo $(CURSIVE)$(GRAY) ":::Deleting executables:::" $(NONE)
 	@rm -f $(NAME) $(BONUS)
+	@make -s fclean -C mylib/
 	@echo $(RED)":::All deleted:::"$(NONE)
 
 re: fclean all

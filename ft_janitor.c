@@ -15,7 +15,7 @@
 void	ft_false_input(int ac, int fd)
 {
 	if (ac != 2)
-		write(2, "usage: ./fdf map.fdf\n", 21);
+		write(2, "Usage: ./fdf <filename> [ case_size z_size ]\n", 45);
 	else if (fd <= 0)
 		write(2, "file does not exist\n", 21);
 	else

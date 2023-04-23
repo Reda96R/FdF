@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-//#include <mlx.h>
 #include "mlx_linux/mlx.h"
 
 int	main(int ac, char *av[])
