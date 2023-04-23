@@ -6,7 +6,7 @@ MYLIB = mylib/mylib.a
 OBJS = $(FILES:.c=.o)
 OBJS_M = $(FILES_M:.c=.o)
 B_OBJS = $(BONUS_FILES:.c=.o)
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 
 ifeq ($(OS), Darwin)
 FILES_M = fdf.c
