@@ -31,8 +31,10 @@ void	ft_errors_buster(int id)
 	else if (id == 2)
 		write(2, "invalide map file !\n", 20);
 	else if (id == 3)
-		write(2, "invalide map file !\n", 20);
-	exit (1);
+		write(2, "invalide map file !\n", 20);  
+  else if (id == 4)
+    ft_putstr_fd("File is empty\n", 2);
+  exit (1);
 }
 
 
