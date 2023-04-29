@@ -23,5 +23,5 @@ int	ft_word_counter(char *str, char c)
 	while (str[i])
 		if (str[i++] == c && str[i] != c)
 			count++;
-	return (count);
+  return (count);
 }

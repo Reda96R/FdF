@@ -8,50 +8,39 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 23:28:02 by rerayyad          #+#    #+#             */
 /*   Updated: 2023/04/25 18:25:48 by rerayyad         ###   ########.fr       */
-<<<<<<< HEAD
-=======
-/*   Updated: 2023/04/25 16:52:15 by rerayyad         ###   ########.fr       */
->>>>>>> e52361800a21680e477dca61270e1946cbd2bfa5
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-<<<<<<< HEAD
 #include "get_next_line.h"
-=======
->>>>>>> e52361800a21680e477dca61270e1946cbd2bfa5
 #include "mlx_linux/mlx.h"
 
 int	main(int ac, char *av[])
 {
 	t_data	**fdf;
 	int		fd;
-  char  *line;
-	
-  fd = open (av[1], O_RDONLY, 0);
-  if (!get_next_line(fd, &line))
-  {
-    free(line);
-    close (fd);
-    ft_errors_buster(4);
-  }
-  fd = open (av[1], O_RDONLY, 0);
-  if (ac != 2 || !ft_extension_check(av[1]) || fd <= 0)
+	// char  *line;
+
+	fd = open (av[1], O_RDONLY, 0);
+	if (ac != 2 || !ft_extension_check(av[1]) || fd <= 0)
 	{
-		ft_false_input(ac, fd);
 		close (fd);
-		exit (1);
+		ft_false_input(ac, fd);
 	}
-<<<<<<< HEAD
-  else if (!ft_lenght_check(av[1], ft_width(av[1])))
-		  ft_errors_buster(1);
-  else
-=======
+	// else if (!get_next_line(fd, &line))
+	// {
+	// 	free(line);
+	// 	close (fd);
+	// 	ft_errors_buster(4);
+	// }
 	else if (!ft_lenght_check(av[1], ft_width(av[1])))
-		ft_errors_buster(1);
+			ft_errors_buster(1);
 	else
->>>>>>> e52361800a21680e477dca61270e1946cbd2bfa5
+		{
+      // close(fd);
+			// fd = open (av[1], O_RDONLY, 0);
 			fdf = ft_maps_reader(av[1], fd);
+		}
 	ft_cleaner(&fdf, ft_height(av[1]));
-  return (0);
+	return (0);
 }

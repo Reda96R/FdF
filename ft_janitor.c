@@ -22,6 +22,7 @@ void	ft_false_input(int ac, int fd)
 
 	else
 		ft_putstr_fd("invalide file type!\n", 2);
+	exit (1);
 }
 
 void	ft_errors_buster(int id)

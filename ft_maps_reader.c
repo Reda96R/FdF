@@ -50,8 +50,6 @@ t_data	**ft_maps_reader(char *file, int fd)
 	int		x;
 	int		y;
 
-	// if (!ft_file_check(file))
- //    ft_errors_buster(4);
   x = ft_width(file);
 	y = ft_height(file);
 	fdf = (t_data **) malloc (sizeof (t_data *) * (y + 1));

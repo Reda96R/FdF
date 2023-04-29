@@ -25,19 +25,23 @@ int	ft_extension_check(char *map)
 
 int	ft_lenght_check(char *file, int y)
 {
-	char	*line;
-	int		fd;
+  char *line;
+  int   r;
+  int fd;
 
-	fd = open (file, O_RDONLY, 0);
-	while (get_next_line(fd, &line))
-	{
-		if (y != ft_word_counter(line, ' '))
-		{
-			free(line);
-			return (0);
-		}
-		free(line);
-	}
-	free(line);
-	return (1);
+  r = 1;
+  fd = open (file, O_RDONLY, 0);
+  while (get_next_line(fd, &line))
+  {
+    if (y != ft_word_counter(line, ' '))
+    {
+      r = 0;
+      free(line);
+      break;
+    }
+    free(line);
+  }
+  close(fd);
+  // free(line);
+  return (r);
 }
