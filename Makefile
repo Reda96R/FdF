@@ -1,12 +1,13 @@
 OS = $(shell uname -s)
 NAME = fdf
 BONUS = fdf_bonus
-FILES = ft_helpers.c ft_maps_reader.c get_next_line.c ft_reader_tools.c ft_checkers.c ft_janitor.c 
+FILES = ft_helpers.c ft_maps_reader.c ft_reader_tools.c ft_checkers.c ft_janitor.c 
 MYLIB = mylib/mylib.a
+MYPRINT = mylib/ft_printf/ft_printf.a
 OBJS = $(FILES:.c=.o)
 OBJS_M = $(FILES_M:.c=.o)
 B_OBJS = $(BONUS_FILES:.c=.o)
-CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=leak
+CFLAGS = -Wall -Wextra -Werror #g -fsanitize=address 
 
 ifeq ($(OS), Darwin)
 FILES_M = fdf.c
@@ -24,7 +25,7 @@ bonus: $(BONUS)
 
 $(NAME): $(OBJS) $(OBJS_M)
 	@echo $(CURSIVE)$(GRAY) ":::Compiling $(NAME):::" $(NONE)
-	@cc $(CFLAGS) $(COMP) $(OBJS) $(OBJS_M) $(MYLIB) -o $(NAME)
+	@cc $(CFLAGS) $(COMP) $(OBJS) $(OBJS_M) $(MYLIB) $(MYPRINT) -o $(NAME)
 	@echo $(GREEN)"::: $(NAME) is ready:::"$(NONE)
 
 $(BONUS): $(B_OBJS) $(OBJS)

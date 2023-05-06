@@ -1,5 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -17,9 +15,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include "get_next_line.h"
+# include "includes/get_next_line.h"
 # include "mylib/libft.h"
-
+# include "mylib/ft_printf/ft_printf.h"
 typedef struct s_data
 {
 	int		x;
@@ -27,17 +25,18 @@ typedef struct s_data
 	int		z;
 }	t_data;
 
+
 /* ::: maps reader :::*/
 t_data	**ft_maps_reader(char *file, int fd);
-void	ft_filler(t_data **fdf, int fd);
-
+void  ft_parser(t_data **fdf, int fd, int y);
+int	  ft_filler(t_data **fdf, int fd, int width);
 /* ::: reader tools ::: */
 int		ft_width(char *file);
 int		ft_height(char *file);
 
 /* ::: checkers ::: */
 int		ft_extension_check(char *map);
-int		ft_lenght_check(char *file, int y);
+int		ft_lenght_check(int fd, int y);
 
 /* ::: janitor ::: */
 void	ft_errors_buster(int id);
@@ -45,7 +44,7 @@ void	ft_false_input(int ac, int fd);
 void	ft_cleaner(t_data ***fdf, int rows);
 
 /* ::: helpers ::: */
-int		ft_word_counter(char *str, char c);
+int		ft_space_counter(char *str, char c);
 //char	**ft_split(char const *s, char c);
 //int		ft_atoi(const char *str);
 //char	*ft_strrchr(char *s, int c);

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "includes/get_next_line.h"
 #include "mylib/libft.h"
 
 int	ft_extension_check(char *map)
@@ -23,25 +24,53 @@ int	ft_extension_check(char *map)
 	return (1);
 }
 
-int	ft_lenght_check(char *file, int y)
-{
-  char *line;
-  int   r;
-  int fd;
+// int ft_lenght_check(int fd, int y)
+// {
+//   char *line;
+//   int   r;
+//
+//   while (get_next_line(fd, &line))
+//   {
+//     if (y != ft_space_counter(line, ' '))
+//     {
+//       r = 0;
+//       break;
+//     }
+//     free(line);
+//   }
+//   free(line);
+//   close (fd);
+//   return (r);
+// }
 
+int ft_lenght_check(int fd, int width)
+{
+  char    **str;
+  char    *line;
+  int             x;
+  int             y;
+  int             r;
+
+  y = 0;
   r = 1;
-  fd = open (file, O_RDONLY, 0);
+  width = 1;
   while (get_next_line(fd, &line))
   {
-    if (y != ft_word_counter(line, ' '))
+    if (y == 0)
+      width += ft_space_counter(line, ' ');
+    str = ft_split(line, ' ');
+    x = 0;
+    while (str[x])
     {
-      r = 0;
-      free(line);
-      break;
+      free(str[x]);
+      x++;
     }
+    if (x != width)
+      r = 0;
+    free(str);
     free(line);
+    y++;
   }
-  close(fd);
-  // free(line);
+  printf("test%d\n", r);
   return (r);
 }

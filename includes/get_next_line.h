@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_helpers.c                                       :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 17:39:15 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/04/25 18:26:29 by rerayyad         ###   ########.fr       */
+/*   Created: 2022/12/01 11:41:01 by rerayyad          #+#    #+#             */
+/*   Updated: 2023/04/15 02:53:05 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-#include <stdio.h>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	ft_space_counter(char *str, char c)
-{
-	int	i;
-	int	count;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 2
+# endif
 
-	i = 0;
-	count = 0;
-	while (str[i])
-		if (str[i++] == c && str[i] != c)
-			count++;
-   return (count);
-}
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include "../fdf.h"
+
+int		get_next_line(int fd, char **line);
+char	*ft_fill(char *stock, int fd);
+int		ft_search(char *str, int c);
+char	*ft_line(char *src);
+char	*ft_saver(char *stock);
+
+#endif

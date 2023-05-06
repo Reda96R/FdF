@@ -20,10 +20,10 @@ int	ft_width(char *file)
 
 	fd = open(file, O_RDONLY, 0);
 	get_next_line(fd, &line);
-	width = ft_word_counter(line, ' ');
+	width = ft_space_counter(line, ' ');
 	free(line);
 	close (fd);
-	return (width);
+	return (++width);
 }
 
 int	ft_height(char *file)

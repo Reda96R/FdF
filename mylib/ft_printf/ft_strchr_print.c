@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_helpers.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 17:39:15 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/04/25 18:26:29 by rerayyad         ###   ########.fr       */
+/*   Created: 2022/11/20 12:57:04 by rerayyad          #+#    #+#             */
+/*   Updated: 2022/11/20 14:54:36 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-#include <stdio.h>
+#include "printf.h"
 
-int	ft_space_counter(char *str, char c)
+int	ft_strchr_print(const char *s, int c)
 {
-	int	i;
-	int	count;
+	size_t	i;
 
 	i = 0;
-	count = 0;
-	while (str[i])
-		if (str[i++] == c && str[i] != c)
-			count++;
-   return (count);
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return (1);
+		i++;
+	}
+	return (0);
 }
