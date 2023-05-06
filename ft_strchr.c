@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 14:03:35 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/05/06 16:30:33 by rerayyad         ###   ########.fr       */
+/*   Created: 2022/10/29 10:59:17 by rerayyad          #+#    #+#             */
+/*   Updated: 2023/05/06 16:16:26 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-#include <mlx.h>
+#include "libft.h"
 
-int	main(int ac, char *av[])
+char	*ft_strchr(const char *s, int c)
 {
-	t_data	**fdf;
-	int		fd;
-	char	*line;
+	int	i;
 
-	line = NULL;
-	fd = open (av[1], O_RDONLY, 0);
-	if (ac != 2 || !ft_extension_check(av[1]) || fd <= 0
-		|| !get_next_line(fd, &line))
-		ft_false_input(ac, fd);
-	else
+	i = 0;
+	if (!s)
+		return (NULL);
+	while (s[i])
 	{
-		fd = open (av[1], O_RDONLY, 0);
-		fdf = ft_maps_reader(av[1], fd);
+		if (s[i] == (char)c)
+			return ((char *)s + i);
+		i++;
 	}
-	free(line);
-	close (fd);
-	ft_cleaner(&fdf, ft_height(av[1]));
-	return (0);
+	if (s[i] == (char )c)
+		return ((char *)s + i);
+	return (NULL);
 }
-

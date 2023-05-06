@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checkers.c                                      :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/17 00:06:12 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/05/06 16:21:41 by rerayyad         ###   ########.fr       */
+/*   Created: 2022/10/29 10:32:34 by rerayyad          #+#    #+#             */
+/*   Updated: 2023/05/06 16:19:03 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-#include "includes/get_next_line.h"
-#include "mylib/libft.h"
+#include "libft.h"
 
-int	ft_extension_check(char *map)
+size_t	ft_strlen(const char *str)
 {
-	char	*extension;
+	size_t	i;
 
-	extension = ft_strrchr(map, 'f');
-	if (extension == NULL || ft_strncmp(extension - 3, ".fdf", 4))
+	i = 0;
+	if (!str)
 		return (0);
-	return (1);
+	while (str[i])
+		i++;
+	return (i);
 }

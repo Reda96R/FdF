@@ -1,37 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 14:03:35 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/05/06 16:30:33 by rerayyad         ###   ########.fr       */
+/*   Created: 2022/10/29 14:49:41 by rerayyad          #+#    #+#             */
+/*   Updated: 2023/05/06 16:11:01 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-#include <mlx.h>
+#include "libft.h"
+#include <stdint.h>
 
-int	main(int ac, char *av[])
+int	ft_atoi(const char *str)
 {
-	t_data	**fdf;
-	int		fd;
-	char	*line;
+	int	i;
+	int	s;
+	int	r;
 
-	line = NULL;
-	fd = open (av[1], O_RDONLY, 0);
-	if (ac != 2 || !ft_extension_check(av[1]) || fd <= 0
-		|| !get_next_line(fd, &line))
-		ft_false_input(ac, fd);
-	else
+	i = 0;
+	s = 1;
+	r = 0;
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		fd = open (av[1], O_RDONLY, 0);
-		fdf = ft_maps_reader(av[1], fd);
+		if (str[i] == '-')
+			s *= -1;
+		i++;
 	}
-	free(line);
-	close (fd);
-	ft_cleaner(&fdf, ft_height(av[1]));
-	return (0);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		r = r * 10 + str[i] - 48;
+		i++;
+	}
+	return (r * s);
 }
-
